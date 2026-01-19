@@ -1,0 +1,334 @@
+[
+  {
+    "atomicNumber": 1,
+    "symbol": "H",
+    "name": "Hydrogen",
+    "atomicMass": 1,
+    "shells": [
+      1
+    ]
+  },
+  {
+    "atomicNumber": 2,
+    "symbol": "He",
+    "name": "Helium",
+    "atomicMass": 4,
+    "shells": [
+      2
+    ]
+  },
+  {
+    "atomicNumber": 4,
+    "symbol": "Be",
+    "name": "Beryllium",
+    "atomicMass": 9,
+    "shells": [
+      2,
+      2
+    ]
+  },
+  {
+    "atomicNumber": 6,
+    "symbol": "C",
+    "name": "Carbon",
+    "atomicMass": 12,
+    "shells": [
+      2,
+      4
+    ]
+  },
+  {
+    "atomicNumber": 7,
+    "symbol": "N",
+    "name": "Nitrogen",
+    "atomicMass": 14,
+    "shells": [
+      2,
+      5
+    ]
+  },
+  {
+    "atomicNumber": 8,
+    "symbol": "O",
+    "name": "Oxygen",
+    "atomicMass": 16,
+    "shells": [
+      2,
+      6
+    ]
+  },
+  {
+    "atomicNumber": 9,
+    "symbol": "F",
+    "name": "Fluorine",
+    "atomicMass": 19,
+    "shells": [
+      2,
+      7
+    ]
+  },
+  {
+    "atomicNumber": 10,
+    "symbol": "Ne",
+    "name": "Neon",
+    "atomicMass": 20,
+    "shells": [
+      2,
+      8
+    ]
+  },
+  {
+    "atomicNumber": 11,
+    "symbol": "Na",
+    "name": "Sodium",
+    "atomicMass": 23,
+    "shells": [
+      2,
+      8,
+      1
+    ]
+  },
+  {
+    "atomicNumber": 12,
+    "symbol": "Mg",
+    "name": "Magnesium",
+    "atomicMass": 24,
+    "shells": [
+      2,
+      8,
+      2
+    ]
+  },
+  {
+    "atomicNumber": 13,
+    "symbol": "Al",
+    "name": "Aluminium",
+    "atomicMass": 27,
+    "shells": [
+      2,
+      8,
+      3
+    ]
+  },
+  {
+    "atomicNumber": 14,
+    "symbol": "Si",
+    "name": "Silicon",
+    "atomicMass": 28,
+    "shells": [
+      2,
+      8,
+      4
+    ]
+  },
+  {
+    "atomicNumber": 15,
+    "symbol": "P",
+    "name": "Phosphorus",
+    "atomicMass": 31,
+    "shells": [
+      2,
+      8,
+      5
+    ]
+  },
+  {
+    "atomicNumber": 16,
+    "symbol": "S",
+    "name": "Sulfur",
+    "atomicMass": 32,
+    "shells": [
+      2,
+      8,
+      6
+    ]
+  },
+  {
+    "atomicNumber": 17,
+    "symbol": "Cl",
+    "name": "Chlorine",
+    "atomicMass": 35,
+    "shells": [
+      2,
+      8,
+      7
+    ]
+  },
+  {
+    "atomicNumber": 18,
+    "symbol": "Ar",
+    "name": "Argon",
+    "atomicMass": 40,
+    "shells": [
+      2,
+      8,
+      8
+    ]
+  },
+  {
+    "atomicNumber": 19,
+    "symbol": "K",
+    "name": "Potassium",
+    "atomicMass": 39,
+    "shells": [
+      2,
+      8,
+      8,
+      1
+    ]
+  },
+  {
+    "atomicNumber": 20,
+    "symbol": "Ca",
+    "name": "Calcium",
+    "atomicMass": 40,
+    "shells": [
+      2,
+      8,
+      8,
+      2
+    ]
+  },
+  {
+    "atomicNumber": 25,
+    "symbol": "Mn",
+    "name": "Manganese",
+    "atomicMass": 55,
+    "shells": [
+      2,
+      8,
+      13,
+      2
+    ]
+  },
+  {
+    "atomicNumber": 26,
+    "symbol": "Fe",
+    "name": "Iron",
+    "atomicMass": 56,
+    "shells": [
+      2,
+      8,
+      14,
+      2
+    ]
+  },
+  {
+    "atomicNumber": 29,
+    "symbol": "Cu",
+    "name": "Copper",
+    "atomicMass": 64,
+    "shells": [
+      2,
+      8,
+      18,
+      1
+    ]
+  },
+  {
+    "atomicNumber": 30,
+    "symbol": "Zn",
+    "name": "Zinc",
+    "atomicMass": 65,
+    "shells": [
+      2,
+      8,
+      18,
+      2
+    ]
+  },
+  {
+    "atomicNumber": 35,
+    "symbol": "Br",
+    "name": "Bromine",
+    "atomicMass": 80,
+    "shells": [
+      2,
+      8,
+      18,
+      7
+    ]
+  },
+  {
+    "atomicNumber": 47,
+    "symbol": "Ag",
+    "name": "Silver",
+    "atomicMass": 108,
+    "shells": [
+      2,
+      8,
+      18,
+      18,
+      1
+    ]
+  },
+  {
+    "atomicNumber": 53,
+    "symbol": "I",
+    "name": "Iodine",
+    "atomicMass": 127,
+    "shells": [
+      2,
+      8,
+      18,
+      18,
+      7
+    ]
+  },
+  {
+    "atomicNumber": 56,
+    "symbol": "Ba",
+    "name": "Barium",
+    "atomicMass": 137,
+    "shells": [
+      2,
+      8,
+      18,
+      18,
+      8,
+      2
+    ]
+  },
+  {
+    "atomicNumber": 79,
+    "symbol": "Au",
+    "name": "Gold",
+    "atomicMass": 197,
+    "shells": [
+      2,
+      8,
+      18,
+      32,
+      18,
+      1
+    ]
+  },
+  {
+    "atomicNumber": 80,
+    "symbol": "Hg",
+    "name": "Mercury",
+    "atomicMass": 201,
+    "shells": [
+      2,
+      8,
+      18,
+      32,
+      18,
+      2
+    ]
+  },
+  {
+    "atomicNumber": 82,
+    "symbol": "Pb",
+    "name": "Lead",
+    "atomicMass": 207,
+    "shells": [
+      2,
+      8,
+      18,
+      32,
+      18,
+      4
+    ]
+  }
+]

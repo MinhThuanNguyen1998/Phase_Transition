@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 27df92cfc53b62f40a987bc587be981b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - dragOjectConfig: {fileID: 11400000, guid: e42f60f56b9e9cb4eb7fd5c125d25278, type: 2}
+  - dragClip: {fileID: 8300000, guid: 22272958fb420fa40821e5c2a091eda2, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

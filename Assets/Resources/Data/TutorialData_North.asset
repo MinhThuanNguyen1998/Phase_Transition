@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b80a441b91204334dabc962a8fa7417e, type: 3}
+  m_Name: TutorialData_North
+  m_EditorClassIdentifier: 
+  m_data:
+  - buttonName: "Tr\u1EDF v\u1EC1"
+    buttonContent: "N\xFAt tr\u1EDF v\u1EC1 menu ch\xEDnh c\u1EE7a ph\u1EA7n m\u1EC1m"
+    buttonAudio: {fileID: 8300000, guid: 5406b3de98b06294cb29dcb7777932d8, type: 3}
+  - buttonName: "T\u1EA3i l\u1EA1i"
+    buttonContent: "N\xFAt t\u1EA3i l\u1EA1i th\xED nghi\u1EC7m t\u1EEB \u0111\u1EA7u"
+    buttonAudio: {fileID: 8300000, guid: 8198751e77e385340b3c48fcbd55a446, type: 3}
+  - buttonName: "\u0110\u1ED5i m\xE0u \u1ED1ng b\u01A1m"
+    buttonContent: "N\xFAt \u0111\u1ED5i m\xE0u \u1ED1ng b\u01A1m"
+    buttonAudio: {fileID: 8300000, guid: 315355a1e4effa846ae1ad2870c26c70, type: 3}
+  - buttonName: "H\u01B0\u1EDBng d\u1EABn"
+    buttonContent: "N\xFAt hi\u1EC3n th\u1ECB c\xE1c b\u01B0\u1EDBc c\u1EE7a ph\u1EA7n
+      m\u1EC1m"
+    buttonAudio: {fileID: 8300000, guid: f8f72069b42d9ca438f24f1e14ce3d36, type: 3}
+  - buttonName: "L\xFD thuy\u1EBFt"
+    buttonContent: "N\xFAt hi\u1EC3n th\u1ECB l\xFD thuy\u1EBFt c\u1EE7a th\xED nghi\u1EC7m"
+    buttonAudio: {fileID: 8300000, guid: 4244b8a9294fdd34ca946ded27ac300a, type: 3}
+  - buttonName: "Ch\u1EBF \u0111\u1ED9 g\u1EE3i \xFD"
+    buttonContent: "N\xFAt \u0111\u1EC3 b\u1EADt ch\u1EBF \u0111\u1ED9\\ng\u1EE3i
+      \xFD"
+    buttonAudio: {fileID: 8300000, guid: 3f255b21d87512246a2939d9b32e3785, type: 3}
+  - buttonName: "T\u1EF1 \u0111\u1ED9ng t\u1EA1o ph\xE2n t\u1EED"
+    buttonContent: "N\xFAt \u0111\u1EC3 t\u1EA1o t\u1EF1 \u0111\u1ED9ng ph\xE2n t\u1EED"
+    buttonAudio: {fileID: 8300000, guid: e52be6fc064287144a77e3675ec500e3, type: 3}
+  - buttonName: "\u0110\u1ED3ng h\u1ED3 \xE1p su\u1EA5t"
+    buttonContent: "D\xF9ng \u0111\u1EC3 \u0111o \xE1p su\u1EA5t trong b\xECnh"
+    buttonAudio: {fileID: 8300000, guid: e4062c0507b702244befb3aec9f67ad8, type: 3}
+  - buttonName: "B\xECnh k\xEDn"
+    buttonContent: "D\xF9ng \u0111\u1EC3 ch\u1EE9a \u0111\u1EF1ng ph\xE2n t\u1EED"
+    buttonAudio: {fileID: 8300000, guid: 21d7d4ecaab60cb439c5ef304a01b63d, type: 3}
+  - buttonName: "B\u1EBFp \u0111i\u1EC7n"
+    buttonContent: "D\xF9ng \u0111\u1EC3 cung c\u1EA5p nhi\u1EC7t l\u01B0\u1EE3ng
+      cho b\xECnh"
+    buttonAudio: {fileID: 8300000, guid: 1f8f3cffd16ed214aadd8aacb0c67676, type: 3}
+  - buttonName: "B\u01A1m tay"
+    buttonContent: "D\xF9ng \u0111\u1EC3 t\u0103ng s\u1ED1 l\u01B0\u1EE3ng ph\xE2n
+      t\u1EED"
+    buttonAudio: {fileID: 8300000, guid: 3f3241588eafd134c8f605bcadfbd352, type: 3}
