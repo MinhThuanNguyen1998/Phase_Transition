@@ -21,6 +21,20 @@ public class PressureController : MonoBehaviour
     private float m_TargetAngle;
     private float m_Velocity;
     private float m_CurrentMinAngle;
+    private void OnEnable()
+    {
+        StoveUIController.OnTemperatureChanged += HandleTemperatureChanged;
+        StoveUIController.OnResetRequested += ResetNeedle;
+    }
+    private void OnDisable()
+    {
+        StoveUIController.OnTemperatureChanged -= HandleTemperatureChanged;
+        StoveUIController.OnResetRequested -= ResetNeedle;
+    }
+    private void HandleTemperatureChanged(int delta)
+    {
+        IncreasePressureByTemperature(delta);
+    }
     private void Start() => ResetNeedle();
     private void Update()
     {

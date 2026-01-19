@@ -14,14 +14,14 @@ public class MoleculeManager : Singleton<MoleculeManager>
     [SerializeField] private Transform m_SpawnPosition;
     [Header("Bound")]
     [SerializeField] private BoxCollider m_Bound;
-    [Header("Pressure")]
-    [SerializeField] private PressureController m_PressureController;
+   
     [SerializeField] private List<PressureThreshold> m_PressureThresholdList;
-    [SerializeField] private StateChangeController m_StateChangeController;
-    [Header("AirPumpMoving")]
-    [SerializeField] private AirPumpMoving m_AirPumpMoving;
-    [Header("PointPhaseController")]
+   
+    [Header("References")]
     [SerializeField] private PointPhaseController m_PointPhaseController;
+    [SerializeField] private AirPumpMoving m_AirPumpMoving;
+    [SerializeField] private StateChangeController m_StateChangeController;
+    [SerializeField] private PressureController m_PressureController;
     public BoxCollider Bound => m_Bound;
     private float m_OffsetBoundX = 0.6f;
     private float m_MoleculeAmount = 48f;

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 public enum TemperatureUnit
@@ -8,9 +9,12 @@ public enum TemperatureUnit
 public class StoveUIController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI m_TextTemperature;
-    [SerializeField] private PressureController m_PressureController;
-    [SerializeField] private StateChangeController m_StateChangeController;
-    [SerializeField] private PointPhaseController m_PointPhaseController;
+
+    public static event Action OnResetRequested;
+    public static event Action<int> OnTemperatureChanged; // delta
+    public static event Action OnStateChanged;
+    public static event Action<float> OnPointMoveRequested;
+
     private const float DEFAULT_FONT_SIZE = 48f;
     private int m_TemperatureValue = 20;
     private bool m_IsOn = false;
@@ -25,12 +29,12 @@ public class StoveUIController : MonoBehaviour
     public void OnButtonPlus()
     {
         ChangeTemperature(+Config.STEP_TEMP);
-        m_PointPhaseController.Move(+Config.POINT_SPEED_ON_CHANGE_TEMPERATURE);
+        OnPointMoveRequested?.Invoke(+Config.POINT_SPEED_ON_CHANGE_TEMPERATURE);
     }
     public void OnButtonMinus() 
     {
         ChangeTemperature(-Config.STEP_TEMP);
-        m_PointPhaseController.Move(-Config.POINT_SPEED_ON_CHANGE_TEMPERATURE);
+        OnPointMoveRequested?.Invoke(-Config.POINT_SPEED_ON_CHANGE_TEMPERATURE);
     } 
     public void OnButtonSwitchMode() 
     {
@@ -38,7 +42,7 @@ public class StoveUIController : MonoBehaviour
         m_HasSwitchedMode = true;
         m_CurrentUnit = m_CurrentUnit == TemperatureUnit.Celsius? TemperatureUnit.Kelvin: TemperatureUnit.Celsius;
         Config.OnTemperatureChanged(Config.MIN_TEMP);
-        m_PointPhaseController.Move(Config.POINT_SPEED_ON_SWITCH_MODE);
+        OnPointMoveRequested?.Invoke(Config.POINT_SPEED_ON_SWITCH_MODE);
         UpdateTemperatureText();
     }
     private void ToggleOn_Off()
@@ -56,7 +60,7 @@ public class StoveUIController : MonoBehaviour
     {
         if (!CanChangeTemperature()) return;
         m_TemperatureValue = Mathf.Clamp(m_TemperatureValue + delta,Config.MIN_TEMP,Config.MAX_TEMP);
-        m_PressureController?.IncreasePressureByTemperature(delta);
+        OnTemperatureChanged?.Invoke(delta);
         Config.OnTemperatureChanged(delta);
         Config.TEMPERATURE = m_TemperatureValue;
         UpdateTemperatureText();
@@ -67,7 +71,7 @@ public class StoveUIController : MonoBehaviour
         int value = m_CurrentUnit == TemperatureUnit.Kelvin? m_TemperatureValue + 273: m_TemperatureValue;
         string unit = m_CurrentUnit == TemperatureUnit.Kelvin? Config.Temperature_Kelvin: Config.Temperature_Celcius;
         m_TextTemperature.text = value + unit;
-        m_StateChangeController.ChangeState();
+        OnStateChanged?.Invoke();
     }
     private void ResetDefaultValue()
     {
@@ -77,9 +81,8 @@ public class StoveUIController : MonoBehaviour
         m_TemperatureValue = Config.MIN_TEMP;
         m_TextTemperature.fontSize = 0f;
         Config.Radius = Config.DefaultRadius;
-        m_StateChangeController.ChangeState();
-        m_PressureController.ResetNeedle();
-        m_PointPhaseController.ResetPoint();
+        OnStateChanged?.Invoke();
+        OnResetRequested?.Invoke();
     }
     private bool CanInteract()
     {

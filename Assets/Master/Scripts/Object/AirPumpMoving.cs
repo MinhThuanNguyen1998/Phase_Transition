@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,14 +7,23 @@ using UnityEngine.UIElements;
 public class AirPumpMoving : BaseObjectMoving
 {
     [SerializeField] private Renderer m_BoundaryCube;
-    [SerializeField] private AutoAirPumpUIController m_UIController;
     [SerializeField] private float m_AutoPumpDuration = 0.5f;
+    public static event Action OnAutoPumpStopped;
+
+    private void OnEnable() => AutoAirPumpUIController.OnAutoPumpToggle += HandleToggleFromUI;
+ 
+    private void OnDisable() => AutoAirPumpUIController.OnAutoPumpToggle -= HandleToggleFromUI;
 
     private Tween m_AutoPumpTween;
     protected override void Start()
     {
         base.Start();
         m_Bounds = m_BoundaryCube.bounds;
+    }
+    private void HandleToggleFromUI(bool isOn)
+    {
+        if (isOn) StartAutoPump();
+        else StopAutoPump();
     }
     protected override Vector3 ClampPosition(Vector3 worldPos)
     {
@@ -38,7 +48,7 @@ public class AirPumpMoving : BaseObjectMoving
     {
         if (m_AutoPumpTween != null)
         {
-            m_UIController?.ForeTurnOffAirPumpToggleOn();
+            OnAutoPumpStopped?.Invoke();
             m_AutoPumpTween.Kill();
         }
     }

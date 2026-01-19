@@ -8,9 +8,14 @@ public class StateChangeController : MonoBehaviour
 {
     [SerializeField] private List<GameObject> m_StateList;
     [SerializeField] private GameObject m_MoleculeWarning;
-    [SerializeField] private PressureController m_PressureController;
 
-    private void OnEnable() => WarnIfMoleculesFull(false);
+    private void OnEnable() 
+    {
+        WarnIfMoleculesFull(false);
+        StoveUIController.OnStateChanged += ChangeState;
+    }
+    private void OnDisable() => StoveUIController.OnStateChanged -= ChangeState;
+   
     public void ChangeState()
     {
         ApplyStateFromConfig();

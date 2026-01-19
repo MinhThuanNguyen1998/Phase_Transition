@@ -7447,9 +7447,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TextTemperature: {fileID: 1343522115}
-  m_PressureController: {fileID: 919132147608387174}
-  m_StateChangeController: {fileID: 1054404448}
-  m_PointPhaseController: {fileID: 608296157}
 --- !u!1 &659471662
 GameObject:
   m_ObjectHideFlags: 0
@@ -8981,7 +8978,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NormalSprite: {fileID: 21300000, guid: 9480d58feb0237840b2189d47e7dec78, type: 3}
   m_PressedSprite: {fileID: 21300000, guid: 9ab2daaac82e5d64ab9f581beec74a90, type: 3}
-  m_AirPumpMoving: {fileID: 1033458387}
   m_AirPumpToggleImage: {fileID: 813417158}
 --- !u!1 &819088567
 GameObject:
@@ -12229,7 +12225,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BoundaryCube: {fileID: 169264010}
-  m_UIController: {fileID: 813417160}
   m_AutoPumpDuration: 0.5
 --- !u!65 &1033458388
 BoxCollider:
@@ -12804,11 +12799,9 @@ Transform:
   - {fileID: 8482685975531723381}
   - {fileID: 543450651651374637}
   - {fileID: 1587989745638927213}
-  - {fileID: 1148963369}
-  - {fileID: 4209906859344258688}
-  - {fileID: 7199225193395207999}
   - {fileID: 1570911610}
   - {fileID: 1587729434}
+  - {fileID: 1535593560}
   m_Father: {fileID: 332771439}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1090435561
@@ -13275,10 +13268,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1148963369}
-  - component: {fileID: 1148963370}
   m_Layer: 0
   m_Name: MoleCule_Scaling
-  m_TagString: Untagged
+  m_TagString: MoleculeBound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13292,27 +13284,13 @@ Transform:
   m_GameObject: {fileID: 1148963368}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.39788818, y: -1.29, z: 0.68}
+  m_LocalPosition: {x: 0.39788818, y: -1.289978, z: 0.68}
   m_LocalScale: {x: 3.9778292, y: 3.4562798, z: 1.205577}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2012672461}
-  m_Father: {fileID: 1063077109}
+  m_Father: {fileID: 1535593560}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1148963370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148963368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca31b805b59c6414584406f27bcd07c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MoleCuleScaling: {fileID: 1148963369}
-  m_Lid: {fileID: 2136613317}
 --- !u!1 &1149419874 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8134915050932049102, guid: 066efa2a861c76f4a87aff207fa905c1, type: 3}
@@ -17101,6 +17079,40 @@ Transform:
   - {fileID: 2032426039}
   - {fileID: 5154825137963923910}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1535593559
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1535593560}
+  m_Layer: 0
+  m_Name: GroupMolecule
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1535593560
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535593559}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1148963369}
+  - {fileID: 4209906859344258688}
+  - {fileID: 7199225193395207999}
+  m_Father: {fileID: 1063077109}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1538071851
 GameObject:
@@ -24907,6 +24919,7 @@ GameObject:
   - component: {fileID: 2136613323}
   - component: {fileID: 2136613322}
   - component: {fileID: 2136613324}
+  - component: {fileID: 2136613325}
   m_Layer: 0
   m_Name: Lid_Moving
   m_TagString: Untagged
@@ -25049,6 +25062,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BoundaryCube: {fileID: 654522790}
+--- !u!114 &2136613325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136613316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca31b805b59c6414584406f27bcd07c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Lid: {fileID: 2136613317}
 --- !u!1001 &2139845465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31101,11 +31127,11 @@ Transform:
   m_GameObject: {fileID: 7300547079718290428}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 2.418, y: -1.021, z: 0.391}
+  m_LocalPosition: {x: 2.4180298, y: -1.0209961, z: 0.391}
   m_LocalScale: {x: 17, y: 17, z: 17}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1063077109}
+  m_Father: {fileID: 1535593560}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4210974547981807166
 MeshFilter:
@@ -35918,8 +35944,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5634615290035941576}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.455, y: -1.092, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4550171, y: -1.09198, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -35935,7 +35961,7 @@ Transform:
   - {fileID: 1202719827}
   - {fileID: 138057898}
   - {fileID: 1538996358}
-  m_Father: {fileID: 1063077109}
+  m_Father: {fileID: 1535593560}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7199225193395208000
 MonoBehaviour:
@@ -35968,7 +35994,6 @@ MonoBehaviour:
   m_MoleculePrefab: {fileID: 4231216100780328688, guid: 4545d451783a04a4083af9081de8e215, type: 3}
   m_SpawnPosition: {fileID: 4209906859344258688}
   m_Bound: {fileID: 2012672458}
-  m_PressureController: {fileID: 919132147608387174}
   m_PressureThresholdList:
   - moleculeCount: 20
     pressureStep: 0.1
@@ -35991,9 +36016,10 @@ MonoBehaviour:
   - moleculeCount: 46
     pressureStep: 4
     triggered: 0
-  m_StateChangeController: {fileID: 1054404448}
-  m_AirPumpMoving: {fileID: 1033458387}
   m_PointPhaseController: {fileID: 608296157}
+  m_AirPumpMoving: {fileID: 1033458387}
+  m_StateChangeController: {fileID: 1054404448}
+  m_PressureController: {fileID: 919132147608387174}
 --- !u!114 &7203547381189531759
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,6 +16,17 @@ public class PointPhaseController : MonoBehaviour
     private float m_Time = 0f;
     private Tween m_MoveTween;
     private void Start() => ResetPoint();
+    private void OnEnable()
+    {
+        StoveUIController.OnPointMoveRequested += Move;
+        StoveUIController.OnResetRequested += ResetPoint;
+    }
+
+    private void OnDisable()
+    {
+        StoveUIController.OnPointMoveRequested -= Move;
+        StoveUIController.OnResetRequested -= ResetPoint;
+    }
     public void Move(float step)
     {
         m_Time = Mathf.Clamp(m_Time + step, Config.MIN_POINT_SPEED,Config.MAX_POINT_SPEED);

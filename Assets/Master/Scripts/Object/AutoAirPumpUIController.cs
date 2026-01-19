@@ -7,15 +7,20 @@ public class AutoAirPumpUIController : MonoBehaviour
 {
     [SerializeField] private Sprite m_NormalSprite;
     [SerializeField] private Sprite m_PressedSprite;
-    [SerializeField] private AirPumpMoving m_AirPumpMoving;
     [SerializeField] private Image m_AirPumpToggleImage;
+
+    public static event Action<bool> OnAutoPumpToggle;
     private bool m_IsToggleOn = false;
+
+    private void OnEnable() => AirPumpMoving.OnAutoPumpStopped += HandleAutoPumpStopped;
+    private void OnDisable() => AirPumpMoving.OnAutoPumpStopped -= HandleAutoPumpStopped;
+    private void HandleAutoPumpStopped() => ForeTurnOffAirPumpToggleOn();
+
     public void ToggleHintMode()
     {
         m_IsToggleOn = !m_IsToggleOn;
         UpdateToggleUI();
-        if (!m_IsToggleOn) StopSpawningMolecule();
-        else StartSpawningMolecule();
+        OnAutoPumpToggle?.Invoke(m_IsToggleOn);
     }
     public void ForeTurnOffAirPumpToggleOn()
     {
@@ -31,6 +36,4 @@ public class AutoAirPumpUIController : MonoBehaviour
         }
         m_AirPumpToggleImage.sprite = m_IsToggleOn ? m_PressedSprite : m_NormalSprite;
     }
-    private void StartSpawningMolecule() => m_AirPumpMoving.StartAutoPump();
-    private void StopSpawningMolecule() => m_AirPumpMoving.StopAutoPump();
 }
