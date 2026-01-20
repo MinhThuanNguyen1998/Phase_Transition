@@ -1,27 +1,29 @@
+using System;
 using UnityEngine;
 
 public class BottomFlaskTrigger : BaseTrigger
 {
-    [SerializeField] private StateChangeController m_StateChangeController;
-
-    protected override void OnStay(Collider other)
+    public static event Action OnStateChanged;
+    public static event Action<float> OnPointMoveRequested;
+    protected override void OnEnter(Collider other)
     {
         if ((IsValidLid(other)))
         {
-           // Debug.Log("Lid OnEnter");
-            m_StateChangeController.WarnIfMoleculesFull(true);
+            TemperatureModel.SetGasState();
+            OnStateChanged?.Invoke();
+            OnPointMoveRequested?.Invoke(TemperatureModel.MAX_POINT_SPEED);
+            //Debug.Log("Lid Trigger");
         }
     }
     protected override void OnExit(Collider other)
     {
         if ((IsValidLid(other)))
         {
-            //Debug.Log("Lid OnExit");
-            m_StateChangeController.WarnIfMoleculesFull(false);
+            //Debug.Log("Lid Exit");
         }
     }
     private bool IsValidLid(Collider other)
     {
-        return other.CompareTag("Lid") && TemperatureModel.TEMPERATURE >= TemperatureModel.MAX_TEMP;
+        return other.CompareTag("Lid");
     }
 }

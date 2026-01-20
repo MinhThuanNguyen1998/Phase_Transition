@@ -20,12 +20,14 @@ public class PointPhaseController : MonoBehaviour
     {
         StoveUIController.OnPointMoveRequested += Move;
         StoveUIController.OnResetRequested += ResetPoint;
+        BottomFlaskTrigger.OnPointMoveRequested += Move;
     }
 
     private void OnDisable()
     {
         StoveUIController.OnPointMoveRequested -= Move;
         StoveUIController.OnResetRequested -= ResetPoint;
+        BottomFlaskTrigger.OnPointMoveRequested -= Move;
     }
     public void Move(float step)
     {

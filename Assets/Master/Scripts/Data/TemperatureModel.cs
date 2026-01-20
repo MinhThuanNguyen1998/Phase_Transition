@@ -31,6 +31,10 @@ public class TemperatureModel
     {
         Radius = Mathf.Clamp(Radius + Mathf.Sign(delta),MIN_RADIUS,MAX_RADIUS);
     }
+    public static void SetGasState()
+    {
+        Radius = MAX_RADIUS;
+    }
     public static int GetStateIndex()
     {
         if (Mathf.Approximately(Radius, DefaultRadius))

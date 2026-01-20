@@ -13,8 +13,13 @@ public class StateChangeController : MonoBehaviour
     {
         WarnIfMoleculesFull(false);
         StoveUIController.OnStateChanged += ChangeState;
+        BottomFlaskTrigger.OnStateChanged += ChangeState;
     }
-    private void OnDisable() => StoveUIController.OnStateChanged -= ChangeState;
+    private void OnDisable() 
+    {
+        StoveUIController.OnStateChanged -= ChangeState;
+        BottomFlaskTrigger.OnStateChanged -= ChangeState;
+    } 
    
     public void ChangeState()
     {

@@ -85,7 +85,7 @@ public class MoleculeManager : Singleton<MoleculeManager>
             {
                 threshold.triggered = true;
                 m_PressureController.UpdatePressureByMoleculeAmount(threshold.pressureStep);
-                //m_StateChangeController.ChangeState();
+                m_StateChangeController.ChangeState();
             }
         }
     }
