@@ -51,6 +51,7 @@ public class StoveUIController : MonoBehaviour
         if (!m_IsOn)
         {
             ResetDefaultValue();
+            OnResetRequested?.Invoke();
             return;
         }
         m_TextTemperature.fontSize = DEFAULT_FONT_SIZE;
@@ -81,7 +82,7 @@ public class StoveUIController : MonoBehaviour
         m_TextTemperature.fontSize = 0f;
         TemperatureModel.Radius = TemperatureModel.DefaultRadius;
         OnStateChanged?.Invoke();
-        OnResetRequested?.Invoke();
+        
     }
     private bool CanInteract()
     {

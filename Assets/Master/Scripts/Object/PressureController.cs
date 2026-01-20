@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.InputSystem;
-
 public class PressureController : MonoBehaviour
 {
     [SerializeField] private Transform m_Needle;
@@ -22,20 +22,21 @@ public class PressureController : MonoBehaviour
     private float m_Velocity;
     private float m_CurrentMinAngle;
     private float m_LastCompression = 0f;
+    private Tween m_ResetTween;
     private void OnEnable()
     {
         StoveUIController.OnTemperatureChanged += UpdatePressureByTemperature;
-        StoveUIController.OnResetRequested += ResetNeedle;
+        StoveUIController.OnResetRequested += ResetNeedleWhenTurningOffStove;
         LidMoving.OnCompressionChanged += UpdatePressureByDistance;
     }
     private void OnDisable()
     {
         StoveUIController.OnTemperatureChanged -= UpdatePressureByTemperature;
-        StoveUIController.OnResetRequested -= ResetNeedle;
+        StoveUIController.OnResetRequested -= ResetNeedleWhenTurningOffStove;
         LidMoving.OnCompressionChanged -= UpdatePressureByDistance;
     }
     
-    private void Start() => ResetNeedle();
+    private void Start() => ResetNeedleWhenStartingApp();
     private void Update()
     {
         m_CurrentAngle = Mathf.SmoothDampAngle(m_CurrentAngle,m_TargetAngle,ref m_Velocity,m_SmoothTime);
@@ -72,12 +73,24 @@ public class PressureController : MonoBehaviour
         Vector3 euler = m_Needle.localEulerAngles;
         m_Needle.localEulerAngles = new Vector3(euler.x, euler.y, angle);
     }
-    public void ResetNeedle()
+    public void ResetNeedleWhenStartingApp()
     {
         m_CurrentAngle = m_StartAngle;
         m_TargetAngle = m_StartAngle;
-        m_Velocity = 0f;
-        RotateNeedle(m_CurrentAngle);
     }
-   
+    public void ResetNeedleWhenTurningOffStove()
+    {
+        m_ResetTween?.Kill();
+        m_ResetTween = DOTween.To(
+            () => m_CurrentAngle,
+            x =>
+            {
+                m_CurrentAngle = x;
+                m_TargetAngle = x;
+            },
+            m_StartAngle,
+            1.2f
+        )
+        .SetEase(Ease.OutCubic);
+    }
 }
