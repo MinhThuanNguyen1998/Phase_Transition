@@ -43,7 +43,7 @@ public class StateChangeController : MonoBehaviour
     }
     private void ApplyStateFromConfig()
     {
-        int index = Config.GetStateIndex();
+        int index = TemperatureModel.GetStateIndex();
         SetActiveStateByIndex(index);
     }
 }

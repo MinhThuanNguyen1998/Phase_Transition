@@ -49,7 +49,7 @@ public class PressureController : MonoBehaviour
     public void UpdatePressureByTemperature(int delta)
     {
         float direction = Mathf.Sign(delta);
-        if (direction > 0 && Config.TEMPERATURE >= Config.MAX_TEMP)
+        if (direction > 0 && TemperatureModel.TEMPERATURE >= TemperatureModel.MAX_TEMP)
             return;
         m_TargetAngle -= direction * m_Step;
         m_TargetAngle = Mathf.Clamp(m_TargetAngle, m_MinAngle, m_MaxAngle);
@@ -58,7 +58,7 @@ public class PressureController : MonoBehaviour
     {
         m_TargetAngle -= m_Step * stepCount;
         m_TargetAngle = Mathf.Clamp(m_TargetAngle, m_MinAngle, m_MaxAngle);
-        Config.Radius += 1f;   
+        TemperatureModel.Radius += 1f;   
     }
     public void UpdatePressureByDistance(float compression)
     {

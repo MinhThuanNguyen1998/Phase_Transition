@@ -26,11 +26,11 @@ public class MoleculeMotion : MonoBehaviour
     {
         Bounds bounds = m_Bound.bounds;
         float time = Time.time + m_NoiseOffset;
-        Vector3 offset = new Vector3(Mathf.PerlinNoise(time, 0f) - 0.5f, Mathf.PerlinNoise(0f, time) - 0.5f, 0f) * Config.Radius;
+        Vector3 offset = new Vector3(Mathf.PerlinNoise(time, 0f) - 0.5f, Mathf.PerlinNoise(0f, time) - 0.5f, 0f) * TemperatureModel.Radius;
         Vector3 target = m_OriginPosition + offset;
         target.x = Mathf.Clamp(target.x, bounds.min.x + m_OffsetBoundX, bounds.max.x);
         target.y = Mathf.Clamp(target.y, bounds.min.y, bounds.max.y);
-        if (Mathf.Approximately(Config.Radius, Config.DefaultRadius))
+        if (Mathf.Approximately(TemperatureModel.Radius, TemperatureModel.DefaultRadius))
         {
             transform.position = Vector3.Lerp(
                 transform.position,

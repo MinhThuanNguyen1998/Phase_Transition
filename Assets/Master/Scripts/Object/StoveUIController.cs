@@ -28,21 +28,21 @@ public class StoveUIController : MonoBehaviour
     }
     public void OnButtonPlus()
     {
-        ChangeTemperature(+Config.STEP_TEMP);
-        OnPointMoveRequested?.Invoke(+Config.POINT_SPEED_ON_CHANGE_TEMPERATURE);
+        ChangeTemperature(+TemperatureModel.STEP_TEMP);
+        OnPointMoveRequested?.Invoke(+TemperatureModel.POINT_SPEED_ON_CHANGE_TEMPERATURE);
     }
     public void OnButtonMinus() 
     {
-        ChangeTemperature(-Config.STEP_TEMP);
-        OnPointMoveRequested?.Invoke(-Config.POINT_SPEED_ON_CHANGE_TEMPERATURE);
+        ChangeTemperature(-TemperatureModel.STEP_TEMP);
+        OnPointMoveRequested?.Invoke(-TemperatureModel.POINT_SPEED_ON_CHANGE_TEMPERATURE);
     } 
     public void OnButtonSwitchMode() 
     {
         if (!CanInteract()) return;
         m_HasSwitchedMode = true;
         m_CurrentUnit = m_CurrentUnit == TemperatureUnit.Celsius? TemperatureUnit.Kelvin: TemperatureUnit.Celsius;
-        Config.OnTemperatureChanged(Config.MIN_TEMP);
-        OnPointMoveRequested?.Invoke(Config.POINT_SPEED_ON_SWITCH_MODE);
+        TemperatureModel.OnTemperatureChanged(TemperatureModel.MIN_TEMP);
+        OnPointMoveRequested?.Invoke(TemperatureModel.POINT_SPEED_ON_SWITCH_MODE);
         UpdateTemperatureText();
     }
     private void ToggleOn_Off()
@@ -54,21 +54,21 @@ public class StoveUIController : MonoBehaviour
             return;
         }
         m_TextTemperature.fontSize = DEFAULT_FONT_SIZE;
-        m_TextTemperature.text = Config.DEFAULT_TEXT;
+        m_TextTemperature.text = TemperatureModel.DEFAULT_TEXT;
     }
     private void ChangeTemperature(int delta)
     {
         if (!CanChangeTemperature()) return;
-        m_TemperatureValue = Mathf.Clamp(m_TemperatureValue + delta,Config.MIN_TEMP,Config.MAX_TEMP);
+        m_TemperatureValue = Mathf.Clamp(m_TemperatureValue + delta,TemperatureModel.MIN_TEMP,TemperatureModel.MAX_TEMP);
         OnTemperatureChanged?.Invoke(delta);
-        Config.OnTemperatureChanged(delta);
-        Config.TEMPERATURE = m_TemperatureValue;
+        TemperatureModel.OnTemperatureChanged(delta);
+        TemperatureModel.TEMPERATURE = m_TemperatureValue;
         UpdateTemperatureText();
     }
     private void UpdateTemperatureText()
     {
         int value = m_CurrentUnit == TemperatureUnit.Kelvin? m_TemperatureValue + 273: m_TemperatureValue;
-        string unit = m_CurrentUnit == TemperatureUnit.Kelvin? Config.Temperature_Kelvin: Config.Temperature_Celcius;
+        string unit = m_CurrentUnit == TemperatureUnit.Kelvin? TemperatureModel.Temperature_Kelvin: TemperatureModel.Temperature_Celcius;
         m_TextTemperature.text = value + unit;
         OnStateChanged?.Invoke();
     }
@@ -77,9 +77,9 @@ public class StoveUIController : MonoBehaviour
         m_IsOn = false;
         m_HasSwitchedMode = false;
         m_CurrentUnit = TemperatureUnit.Kelvin;
-        m_TemperatureValue = Config.MIN_TEMP;
+        m_TemperatureValue = TemperatureModel.MIN_TEMP;
         m_TextTemperature.fontSize = 0f;
-        Config.Radius = Config.DefaultRadius;
+        TemperatureModel.Radius = TemperatureModel.DefaultRadius;
         OnStateChanged?.Invoke();
         OnResetRequested?.Invoke();
     }

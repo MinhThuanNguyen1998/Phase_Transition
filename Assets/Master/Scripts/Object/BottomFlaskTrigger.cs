@@ -22,6 +22,6 @@ public class BottomFlaskTrigger : BaseTrigger
     }
     private bool IsValidLid(Collider other)
     {
-        return other.CompareTag("Lid") && Config.TEMPERATURE >= Config.MAX_TEMP;
+        return other.CompareTag("Lid") && TemperatureModel.TEMPERATURE >= TemperatureModel.MAX_TEMP;
     }
 }

@@ -39,7 +39,7 @@ public class MoleculeManager : Singleton<MoleculeManager>
             return;
         }
         CheckMoleculeAmountToIncreasePressure();
-        m_PointPhaseController.Move(Config.POINT_SPEED_ON_MOLECULE_CREATION);
+        m_PointPhaseController.Move(TemperatureModel.POINT_SPEED_ON_MOLECULE_CREATION);
         GameObject molecule = Instantiate(m_MoleculePrefab, m_SpawnPosition.position, m_MoleculePrefab.transform.rotation, transform);
         MoleculeMotion motion = molecule.GetComponent<MoleculeMotion>();
         m_MoleculesList.Add(motion);

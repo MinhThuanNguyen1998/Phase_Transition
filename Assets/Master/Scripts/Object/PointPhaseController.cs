@@ -29,7 +29,7 @@ public class PointPhaseController : MonoBehaviour
     }
     public void Move(float step)
     {
-        m_Time = Mathf.Clamp(m_Time + step, Config.MIN_POINT_SPEED,Config.MAX_POINT_SPEED);
+        m_Time = Mathf.Clamp(m_Time + step, TemperatureModel.MIN_POINT_SPEED,TemperatureModel.MAX_POINT_SPEED);
         Vector3 targetPos = Vector3.Lerp(m_PointA.position, m_PointB.position, m_Time);
         m_MoveTween?.Kill();
         m_MoveTween = m_Point
