@@ -84,8 +84,8 @@ public class MoleculeManager : Singleton<MoleculeManager>
             if (count >= threshold.moleculeCount && !threshold.triggered)
             {
                 threshold.triggered = true;
-                m_PressureController.IncreasePressureByStep(threshold.pressureStep);
-                m_StateChangeController.ChangeState();
+                m_PressureController.UpdatePressureByMoleculeAmount(threshold.pressureStep);
+                //m_StateChangeController.ChangeState();
             }
         }
     }

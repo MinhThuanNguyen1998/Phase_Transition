@@ -64,7 +64,6 @@ public class StoveUIController : MonoBehaviour
         Config.OnTemperatureChanged(delta);
         Config.TEMPERATURE = m_TemperatureValue;
         UpdateTemperatureText();
-
     }
     private void UpdateTemperatureText()
     {

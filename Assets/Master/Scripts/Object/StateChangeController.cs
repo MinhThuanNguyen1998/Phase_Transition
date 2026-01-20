@@ -23,9 +23,9 @@ public class StateChangeController : MonoBehaviour
     }
     public void WarnIfMoleculesFull(bool isWarning)
     {
-        m_MoleculeWarning.SetActive(isWarning);
-        if (isWarning) SetAllStates(false);
-        else ApplyStateFromConfig();
+        //m_MoleculeWarning.SetActive(isWarning);
+        //if (isWarning) SetAllStates(false);
+        //else ApplyStateFromConfig();
     }
     private void SetActiveStateByIndex(int index)
     {

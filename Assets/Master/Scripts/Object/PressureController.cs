@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PressureController : MonoBehaviour
 {
     [SerializeField] private Transform m_Needle;
-
     [Header("Angle Settings")]
     private const float m_MinAngle = -125f;
     private const float m_MaxAngle = 125f;
@@ -21,20 +21,20 @@ public class PressureController : MonoBehaviour
     private float m_TargetAngle;
     private float m_Velocity;
     private float m_CurrentMinAngle;
+    private float m_LastCompression = 0f;
     private void OnEnable()
     {
-        StoveUIController.OnTemperatureChanged += HandleTemperatureChanged;
+        StoveUIController.OnTemperatureChanged += UpdatePressureByTemperature;
         StoveUIController.OnResetRequested += ResetNeedle;
+        LidMoving.OnCompressionChanged += UpdatePressureByDistance;
     }
     private void OnDisable()
     {
-        StoveUIController.OnTemperatureChanged -= HandleTemperatureChanged;
+        StoveUIController.OnTemperatureChanged -= UpdatePressureByTemperature;
         StoveUIController.OnResetRequested -= ResetNeedle;
+        LidMoving.OnCompressionChanged -= UpdatePressureByDistance;
     }
-    private void HandleTemperatureChanged(int delta)
-    {
-        IncreasePressureByTemperature(delta);
-    }
+    
     private void Start() => ResetNeedle();
     private void Update()
     {
@@ -46,17 +46,26 @@ public class PressureController : MonoBehaviour
         }
         RotateNeedle(angle);
     }
-    public void IncreasePressureByTemperature(int delta)
+    public void UpdatePressureByTemperature(int delta)
     {
         float direction = Mathf.Sign(delta);
+        if (direction > 0 && Config.TEMPERATURE >= Config.MAX_TEMP)
+            return;
         m_TargetAngle -= direction * m_Step;
         m_TargetAngle = Mathf.Clamp(m_TargetAngle, m_MinAngle, m_MaxAngle);
     }
-    public void IncreasePressureByStep(float stepCount)
+    public void UpdatePressureByMoleculeAmount(float stepCount)
     {
         m_TargetAngle -= m_Step * stepCount;
         m_TargetAngle = Mathf.Clamp(m_TargetAngle, m_MinAngle, m_MaxAngle);
         Config.Radius += 1f;   
+    }
+    public void UpdatePressureByDistance(float compression)
+    {
+        float delta = compression - m_LastCompression;
+        m_TargetAngle -= delta * (m_MaxAngle - m_MinAngle);
+        m_TargetAngle = Mathf.Clamp(m_TargetAngle, m_MinAngle, m_MaxAngle);
+        m_LastCompression = compression;
     }
     private void RotateNeedle(float angle)
     {
