@@ -4222,8 +4222,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 359829054}
+  - component: {fileID: 359829055}
   m_Layer: 0
-  m_Name: Group_Phase_Diagram
+  m_Name: Point_Phase_Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4248,6 +4249,22 @@ Transform:
   - {fileID: 608296154}
   m_Father: {fileID: 332771439}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &359829055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359829053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99311f93faa097746a09b02c1bff54c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Point: {fileID: 608296154}
+  m_PointA: {fileID: 453286999}
+  m_PointB: {fileID: 1235503416}
+  m_Step: 0
 --- !u!224 &363471319 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8765268809811888948, guid: 3da00841fe922a648bb0b2b848eff2e7, type: 3}
@@ -6704,9 +6721,8 @@ GameObject:
   - component: {fileID: 608296154}
   - component: {fileID: 608296156}
   - component: {fileID: 608296155}
-  - component: {fileID: 608296157}
   m_Layer: 0
-  m_Name: Point_Phase_Controller
+  m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6769,22 +6785,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608296153}
   m_CullTransparentMesh: 1
---- !u!114 &608296157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608296153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99311f93faa097746a09b02c1bff54c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Point: {fileID: 608296154}
-  m_PointA: {fileID: 453286999}
-  m_PointB: {fileID: 1235503416}
-  m_Step: 0
 --- !u!1 &619900705
 GameObject:
   m_ObjectHideFlags: 0
@@ -36016,7 +36016,7 @@ MonoBehaviour:
   - moleculeCount: 46
     pressureStep: 4
     triggered: 0
-  m_PointPhaseController: {fileID: 608296157}
+  m_PointPhaseController: {fileID: 0}
   m_AirPumpMoving: {fileID: 1033458387}
   m_StateChangeController: {fileID: 1054404448}
   m_PressureController: {fileID: 919132147608387174}
