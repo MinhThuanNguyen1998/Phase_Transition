@@ -29,12 +29,12 @@ public class StoveUIController : MonoBehaviour
     public void OnButtonPlus()
     {
         ChangeTemperature(+TemperatureModel.STEP_TEMP);
-        OnPointMoveRequested?.Invoke(+TemperatureModel.POINT_SPEED_ON_CHANGE_TEMPERATURE);
+        HandlePointMovement(+TemperatureModel.POINT_SPEED_ON_CHANGE_TEMPERATURE);
     }
     public void OnButtonMinus() 
     {
         ChangeTemperature(-TemperatureModel.STEP_TEMP);
-        OnPointMoveRequested?.Invoke(-TemperatureModel.POINT_SPEED_ON_CHANGE_TEMPERATURE);
+        HandlePointMovement(-TemperatureModel.POINT_SPEED_ON_CHANGE_TEMPERATURE);
     } 
     public void OnButtonSwitchMode() 
     {
@@ -65,6 +65,11 @@ public class StoveUIController : MonoBehaviour
         TemperatureModel.OnTemperatureChanged(delta);
         TemperatureModel.TEMPERATURE = m_TemperatureValue;
         UpdateTemperatureText();
+    }
+    private void HandlePointMovement(float delta)
+    {
+        if (!CanChangeTemperature()) return;
+        OnPointMoveRequested?.Invoke(delta);
     }
     private void UpdateTemperatureText()
     {
