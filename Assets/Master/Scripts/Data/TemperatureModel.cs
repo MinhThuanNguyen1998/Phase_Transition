@@ -5,7 +5,7 @@ public class TemperatureModel
 {
     // Temperature Text
     public const string Temperature_Celcius = "°C";
-    public const string Temperature_Kelvin = "K";
+    public const string Temperature_Kelvin = "°K";
     public const string DEFAULT_TEXT = "ON";
 
     // Radius Value
