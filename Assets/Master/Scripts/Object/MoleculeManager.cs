@@ -14,26 +14,24 @@ public class MoleculeManager : Singleton<MoleculeManager>
     [SerializeField] private Transform m_SpawnPosition;
     [Header("Bound")]
     [SerializeField] private BoxCollider m_Bound;
-   
     [SerializeField] private List<PressureThreshold> m_PressureThresholdList;
-   
     [Header("References")]
     [SerializeField] private PointPhaseController m_PointPhaseController;
     [SerializeField] private AirPumpMoving m_AirPumpMoving;
     [SerializeField] private StateChangeController m_StateChangeController;
     [SerializeField] private PressureController m_PressureController;
+    public bool IsOverHeating;
     public BoxCollider Bound => m_Bound;
-    private float m_OffsetBoundX = 0.6f;
     private float m_MoleculeAmount = 48f;
+    private float m_OffsetBoundX = 0.6f;
     private float m_MoveDuration = 0.6f;
-    private Ease m_Ease = Ease.OutQuad;
+   
     private void Start() => ArrangeAs2DSolid(); 
     public void SpawnMolecule() 
     {
         AudioMainManager.Instance.PlayOnShot(SoundType.Pumping);
         bool isOver = IsMoleculeOverLimit();
-        m_StateChangeController.WarnIfMoleculesFull(isOver);
-        if (isOver) 
+        if (isOver)
         {
             m_AirPumpMoving.StopAutoPump();
             return;
@@ -69,7 +67,7 @@ public class MoleculeManager : Singleton<MoleculeManager>
     {
         Transform newMolecule = molecule.transform;
         newMolecule.DOMove(targetPos, m_MoveDuration)
-        .SetEase(m_Ease)
+        .SetEase(Ease.OutQuad)
         .OnComplete(() =>
         {
             molecule.SetOrigin(targetPos);

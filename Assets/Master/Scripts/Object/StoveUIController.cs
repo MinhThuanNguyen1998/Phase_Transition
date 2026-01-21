@@ -9,18 +9,18 @@ public enum TemperatureUnit
 public class StoveUIController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI m_TextTemperature;
-
     public static event Action OnResetRequested;
     public static event Action<int> OnTemperatureChanged; // delta
-    public static event Action OnStateChanged;
+    public static event Action OnStateChangedUI;
     public static event Action<float> OnPointMoveRequested;
-
+ 
     private const float DEFAULT_FONT_SIZE = 48f;
     private int m_TemperatureValue = 20;
     private bool m_IsOn = false;
     private bool m_HasSwitchedMode = false;
     private TemperatureUnit m_CurrentUnit = TemperatureUnit.Celsius;
     private void Start() => ResetDefaultValue();
+    private void OnEnable() => ResetDefaultValue();
     public void OnButtonOn_Of()
     {
         PlayAudioBeep();
@@ -71,7 +71,7 @@ public class StoveUIController : MonoBehaviour
         int value = m_CurrentUnit == TemperatureUnit.Kelvin? m_TemperatureValue + 273: m_TemperatureValue;
         string unit = m_CurrentUnit == TemperatureUnit.Kelvin? TemperatureModel.Temperature_Kelvin: TemperatureModel.Temperature_Celcius;
         m_TextTemperature.text = value + unit;
-        OnStateChanged?.Invoke();
+        OnStateChangedUI?.Invoke();
     }
     private void ResetDefaultValue()
     {
@@ -81,8 +81,8 @@ public class StoveUIController : MonoBehaviour
         m_TemperatureValue = TemperatureModel.MIN_TEMP;
         m_TextTemperature.fontSize = 0f;
         TemperatureModel.Radius = TemperatureModel.DefaultRadius;
-        OnStateChanged?.Invoke();
-        
+        TemperatureModel.TEMPERATURE = TemperatureModel.DEFAULT_TEMPERATURE;
+        OnStateChangedUI?.Invoke();
     }
     private bool CanInteract()
     {

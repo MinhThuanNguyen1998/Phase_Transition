@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class BottomFlaskTrigger : BaseTrigger
 {
-    public static event Action OnStateChanged;
+    public static event Action OnStateChangedUI;
     public static event Action<float> OnPointMoveRequested;
     protected override void OnEnter(Collider other)
     {
         if ((IsValidLid(other)))
         {
             TemperatureModel.SetGasState();
-            OnStateChanged?.Invoke();
+            OnStateChangedUI?.Invoke();
             OnPointMoveRequested?.Invoke(TemperatureModel.MAX_POINT_SPEED);
             //Debug.Log("Lid Trigger");
         }

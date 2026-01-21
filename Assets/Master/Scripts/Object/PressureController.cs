@@ -35,7 +35,6 @@ public class PressureController : MonoBehaviour
         StoveUIController.OnResetRequested -= ResetNeedleWhenTurningOffStove;
         LidMoving.OnCompressionChanged -= UpdatePressureByDistance;
     }
-    
     private void Start() => ResetNeedleWhenStartingApp();
     private void Update()
     {
@@ -54,12 +53,14 @@ public class PressureController : MonoBehaviour
             return;
         m_TargetAngle -= direction * m_Step;
         m_TargetAngle = Mathf.Clamp(m_TargetAngle, m_MinAngle, m_MaxAngle);
+        
     }
     public void UpdatePressureByMoleculeAmount(float stepCount)
     {
         m_TargetAngle -= m_Step * stepCount;
         m_TargetAngle = Mathf.Clamp(m_TargetAngle, m_MinAngle, m_MaxAngle);
-        TemperatureModel.Radius += 1f;   
+        TemperatureModel.Radius += 1f;
+        
     }
     public void UpdatePressureByDistance(float compression)
     {

@@ -37,7 +37,7 @@ public class AirPumpMoving : BaseObjectMoving
     }
     public void StartAutoPump()
     {
-        if (MoleculeManager.Instance.IsMoleculeOverLimit()) return;
+        if (MoleculeManager.Instance.IsMoleculeOverLimit() || MoleculeManager.Instance.IsOverHeating) return;
         transform.position = new Vector3(transform.position.x, m_Bounds.max.y, transform.position.z);
         m_AutoPumpTween =
             transform.DOMoveY(m_Bounds.min.y, m_AutoPumpDuration)

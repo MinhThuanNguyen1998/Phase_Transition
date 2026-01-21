@@ -22,7 +22,6 @@ public class PointPhaseController : MonoBehaviour
         StoveUIController.OnResetRequested += ResetPoint;
         BottomFlaskTrigger.OnPointMoveRequested += Move;
     }
-
     private void OnDisable()
     {
         StoveUIController.OnPointMoveRequested -= Move;
@@ -46,6 +45,5 @@ public class PointPhaseController : MonoBehaviour
         m_MoveTween = m_Point
       .DOMove(m_PointA.position, m_ResetDuration)
       .SetEase(Ease.OutCubic);
-
     }
 }

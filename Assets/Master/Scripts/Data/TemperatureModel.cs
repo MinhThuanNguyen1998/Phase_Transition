@@ -18,6 +18,7 @@ public class TemperatureModel
     public const int MIN_TEMP = 20;
     public const int MAX_TEMP = 260;
     public const int STEP_TEMP = 40;
+    public const float DEFAULT_TEMPERATURE = 20;
     public static float TEMPERATURE = 20f;
 
     // Point

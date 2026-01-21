@@ -6,7 +6,8 @@ public enum SoundType
     Button,
     Popup,
     Beep,
-    Pumping
+    Pumping,
+    Alert
     
 }
 public class AudioMainManager : SingletonMain<AudioMainManager>
@@ -17,7 +18,8 @@ public class AudioMainManager : SingletonMain<AudioMainManager>
     [SerializeField] private AudioClip m_AudioButtonClip;
     [SerializeField] private AudioClip m_AudioBeepClip;
     [SerializeField] private AudioClip m_AudioPumpingClip;
-   
+    [SerializeField] private AudioClip m_AudioAlertClip;
+
     private Dictionary<SoundType, AudioClip> m_SoundMap;
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class AudioMainManager : SingletonMain<AudioMainManager>
             { SoundType.Popup, m_AudioPopupClip },
             { SoundType.Beep,m_AudioBeepClip },
             { SoundType.Pumping,m_AudioPumpingClip },
+            { SoundType.Alert,m_AudioAlertClip },
         };
     }
     public void PlayOnShot(SoundType soundType)

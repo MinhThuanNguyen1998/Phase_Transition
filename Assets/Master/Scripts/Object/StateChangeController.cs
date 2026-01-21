@@ -3,34 +3,42 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using NUnit.Framework;
 using UnityEngine;
-
 public class StateChangeController : MonoBehaviour
 {
     [SerializeField] private List<GameObject> m_StateList;
     [SerializeField] private GameObject m_MoleculeWarning;
+    [SerializeField] private CameraShakeEffect m_ShakeEffect;
+    private bool m_IsWarningActive;
 
     private void OnEnable() 
     {
         WarnIfMoleculesFull(false);
-        StoveUIController.OnStateChanged += ChangeState;
-        BottomFlaskTrigger.OnStateChanged += ChangeState;
+        StoveUIController.OnStateChangedUI += ChangeState;
+        BottomFlaskTrigger.OnStateChangedUI += ChangeState;
     }
     private void OnDisable() 
     {
-        StoveUIController.OnStateChanged -= ChangeState;
-        BottomFlaskTrigger.OnStateChanged -= ChangeState;
-    } 
-   
+        StoveUIController.OnStateChangedUI -= ChangeState;
+        BottomFlaskTrigger.OnStateChangedUI -= ChangeState;
+    }
     public void ChangeState()
     {
+        if (m_IsWarningActive) return;
         ApplyStateFromConfig();
         WarnIfMoleculesFull(false);
     }
     public void WarnIfMoleculesFull(bool isWarning)
     {
-        //m_MoleculeWarning.SetActive(isWarning);
-        //if (isWarning) SetAllStates(false);
-        //else ApplyStateFromConfig();
+        m_IsWarningActive = isWarning;
+        m_MoleculeWarning.SetActive(isWarning);
+
+        if (isWarning)
+        {
+            SetAllStates(false);
+            m_ShakeEffect.Shake();
+            //MainManager.Instance.LoadExp();
+        }
+        else ApplyStateFromConfig();
     }
     private void SetActiveStateByIndex(int index)
     {
